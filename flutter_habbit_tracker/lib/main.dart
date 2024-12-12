@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
+import 'database.dart';
+import 'add_habit_screen.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Databasehelper.initDatabase();
   runApp(const MainApp());
 }
 
@@ -9,11 +13,11 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: Scaffold(
-        body: Center(
-          child: Text('Hello World!'),
-        ),
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: const AddHabitScreen(),
+      theme: ThemeData(
+        primarySwatch: Colors.green,
       ),
     );
   }
